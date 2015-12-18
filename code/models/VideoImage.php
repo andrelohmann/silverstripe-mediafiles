@@ -1,5 +1,5 @@
 <?php
- 
+
 /**
  * extended_image/code/VideoImage.php
  * 
@@ -9,17 +9,17 @@
  * 
  */
  
-class VideoImage extends SecureImage {
+class VideoImage extends SecureImage
+{
     
-        /**
+    /**
          * 
          */
         private static $db = array(
             'Playtime' => 'Time'
         );
         
-        private static $has_one = array(
+    private static $has_one = array(
             'VideoFile' => 'VideoFile'
         );
-    
 }

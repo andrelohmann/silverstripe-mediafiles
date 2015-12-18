@@ -5,10 +5,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class ExtendedUpload extends Extension {
+class ExtendedUpload extends Extension
+{
     
-    public function onAfterLoad(){
+    public function onAfterLoad()
+    {
         // check for existing Method onAfterLoad and run it, if available
-        if($this->owner->file->hasMethod('onAfterLoad')) $this->owner->file->onAfterLoad();
+        if ($this->owner->file->hasMethod('onAfterLoad')) {
+            $this->owner->file->onAfterLoad();
+        }
     }
 }
