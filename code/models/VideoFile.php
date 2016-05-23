@@ -39,7 +39,7 @@ class VideoFile extends File {
 	}
         
     public function PreviewThumbnail(){
-		if($this->ProcessingStatus == 'finished' && $this->PreviewImageID > 0)
+		if($this->ProcessingStatus == 'finished' && $this->PreviewImage()->exists())
 			return $this->PreviewImage()->setWidth(50);
         else
 			return '(No Image)';
@@ -67,7 +67,7 @@ class VideoFile extends File {
 	);
         
     public function CMSThumbnail() {
-		if($this->PreviewImageID > 0 && $Img = $this->PreviewImage()) return $this->PreviewImage()->getFormattedImage('CMSThumbnail');
+		if($this->PreviewImage()->exists()) return $this->PreviewImage()->getFormattedImage('CMSThumbnail');
 		return parent::CMSThumbnail();
 	}
         
@@ -90,7 +90,7 @@ class VideoFile extends File {
 	protected function onBeforeDelete(){
 		parent::onBeforeDelete();
 		
-		if($this->PreviewImageID > 0) $this->PreviewImage()->delete();
+		if($this->PreviewImage()->exists()) $this->PreviewImage()->delete();
 
 		foreach($this->TimelineImages() as $Image){
 			$TimelineImagesFolder = $Image->Parent();
