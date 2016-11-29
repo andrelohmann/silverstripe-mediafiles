@@ -108,7 +108,7 @@ class VideoFile extends File {
 	
 	protected function getLogFile(){
 		if(!$this->log_file){
-			$this->log_file = TEMP_FOLDER.'/VideoFileProcessing-ID-'.$this->ID.'-'.md5($this->getRelativePath()).'.log';
+			$this->log_file = TEMP_FOLDER.'/VideoFileProcessing-ID-'.$this->ID.'.log';
 		}
 		return $this->log_file;
 	}
