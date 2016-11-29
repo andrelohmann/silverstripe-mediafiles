@@ -142,7 +142,7 @@ class VideoFile extends File {
 				//$video->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(10))->save($this->getFullPath().'.jpg');
 			} catch (Exception $ex) {
 				$Message = "ERROR ON - FFProbe:";
-				$this->appendLog($LogFile, $Message, $e->getMessage());
+				$this->appendLog($LogFile, $Message, $ex->getMessage());
                 
 				$this->ProcessingStatus = 'error';
 				$this->write();
