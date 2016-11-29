@@ -5,11 +5,11 @@
  * @package framework
  * @subpackage filesystem
  */
-class RestartFailedVideoFiles extends BuildTask {
+class FinishProcessingVideoFiles extends BuildTask {
 
-	protected $title = 'Restart processing of all failed video files';
+	protected $title = 'Restart processing of all stuck video files';
 
-	protected $description = 'Restart processing of all failed VideoFile objects';
+	protected $description = 'Restart processing of all stuck VideoFile objects';
 
 	/**
 	 * Check that the user has appropriate permissions to execute this task
@@ -28,7 +28,7 @@ class RestartFailedVideoFiles extends BuildTask {
 	 */
 	public function run($request) {
 		$failedFiles = 0;
-		$Videos = VideoFile::get()->filter(array('ProcessingStatus' => 'error'))->sort('ID');
+		$Videos = VideoFile::get()->filter(array('ProcessingStatus' => 'processing'))->sort('ID');
 
 		foreach($Videos as $vid){
 			
@@ -42,7 +42,7 @@ class RestartFailedVideoFiles extends BuildTask {
 			sleep(5);
 		}
 
-		echo "$failedFiles failed VideoFile objects have reinitiated the processing.";
+		echo "$failedFiles stuck VideoFile objects have reinitiated the processing.";
 	}
 
 }
